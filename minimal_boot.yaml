@@ -1,0 +1,21 @@
+device_type: bbbtype
+job_name: noop-test-manual-reset
+timeouts:
+  job:
+    minutes: 5
+  action:
+    minutes: 2
+priority: medium
+visibility: public
+actions:
+  - boot:
+      method: minimal
+      prompts:
+        - 'debian@beaglebone:~\$'
+      auto_login:
+        login_prompt: 'beaglebone login: '
+        username: debian
+        password_prompt: 'Password: '
+        password: 'temppwd'
+      timeout:
+        minutes: 2 
