@@ -1,0 +1,27 @@
+device_type: bbbtype
+job_name: atomic-embedded-10gb-validation
+timeouts:
+  job:
+    minutes: 15
+  action:
+    minutes: 10
+priority: medium
+visibility: public
+
+actions:
+  - deploy:
+      to: flasher
+      images:
+        image:
+          url: ${FINAL_URL}
+          compression: xz
+      timeout:
+        minutes: 15
+
+  - boot:
+      method: minimal
+      prompts:
+        - 'root@beaglebone:~#'
+      auto_login:
+        login_prompt: 'beaglebone login: '
+        username: root
